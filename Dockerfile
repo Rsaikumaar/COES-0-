@@ -13,4 +13,4 @@ RUN pip install -r requirements.txt
 #port 
 EXPOSE 8888
 # Define the entry point for the container
-CMD ["flask", "--app", "main.py", "--debug", "run"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "main:app"]
