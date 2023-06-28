@@ -13,4 +13,4 @@ RUN pip install -r requirements.txt
 #port 
 EXPOSE 8888
 # Define the entry point for the container
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "main:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8888", "main:app"]
