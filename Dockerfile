@@ -11,6 +11,6 @@ COPY . /COES
 # Install the application dependencies
 RUN pip install -r requirements.txt
 #port 
-EXPOSE 8454
+EXPOSE 8888
 # Define the entry point for the container
 CMD ["flask", "--app", "main.py", "--debug", "run"]
