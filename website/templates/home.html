@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+
+ 
+<div class="container">
+    
+    <div class="box"><center><h4>
+      <br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+      Total:
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <br>
+    {{total}}</h4></center></div>
+    
+    <div class="box"><center><h4>
+      <br><br><br>
+      &nbsp;&nbsp;&nbsp;
+      No of<br>Students:&nbsp;&nbsp;
+      {{users}}</h4></center></div>
+    
+    <div class="box">
+    <center>
+    <h4>
+      <br><br><br>
+   Admin<br>{{admin}}
+    </h4>
+    </center>
+    </div>
+  <div class="box">
+    <center>
+    <h4>
+      <br><br><br>
+      No of Tutors:<br>{{tutor}}
+    </h4>
+  </center>
+    </div>  
+</div>
+<div class="container">
+  
+    <div class="box">
+    <center>
+      <h4>
+        <br><br>
+        No of Questions:<br> temperory:{{questions}}
+    </h4>
+  </center>
+    </div >
+    <div class="box">
+    <center>
+    <h4>
+      <br><br>
+      No of Questions:<br> perminent:{{per}}
+    </h4>
+
+
+  </center>
+    </div>
+    
+    <div class="box">
+    <center>
+      <br><br>
+    <h4>No of Active:<br>{{active}}</h4>
+    
+  </center>
+    </div>
+    <div class="box">
+    <center>
+      <br><br>
+    <h4>No of in-Active:<br>{{total-active}}</h4>
+    
+  </center>
+    </div>
+
+</div>
+
+{% endblock %}

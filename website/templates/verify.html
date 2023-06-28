@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+
+</head>
+<body>
+	<div class="form">
+		<h3 align="center">OTP-Verification</h3>
+
+	<form method="POST" action="/verify">
+	
+			<label for="email">OTP</label>
+			<input 
+				type="otp" 
+				class="" 
+				name="otp" id="otp" 
+				placeholder="Enter Otp" 
+				required>
+				<br>
+		<button type="submit" class="btnn"> Submit</button>
+	</form>
+</div>	
+	</div>
+	
+
+</body>
+
+</html>

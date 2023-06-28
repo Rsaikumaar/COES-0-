@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Custom{% endblock %}
+
+
+{% block content%}
+
+{% for i in range(lens) %}
+	<a href="/mails">{{k[i]}}</a>
+{% endfor %}
+{% endblock %}

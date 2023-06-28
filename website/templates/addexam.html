@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Record{% endblock %}
+{% block content %}
+{% if lists[1]==''%}
+
+{% else%}
+{{lists}}
+{% endif%}
+
+
+{% if types=='fill' and types=='voice' and types=='mcq' %}
+{{types}}
+{{messages}}
+{% else %}
+<a href="/" style="color: darkblue; background-color: red;">{{types}}{{messages}}</a>
+{% endif%}
+
+{% endblock %}

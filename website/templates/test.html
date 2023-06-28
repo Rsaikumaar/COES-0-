@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Tests{% endblock %}
+
+{% block content%}
+{% if user.is_authenticated %}
+<h1> please start exam </h1>
+<a href="/sscc/0/0/0">start</a>
+{% endif %}
+
+{% endblock%}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+
+
+<div class="main">
+<form  method="POST">
+
+	<div class="form">
+	<center>
+     <h2>Register</h2>   
+    </center>
+    
+
+	<label  for="types">Register type</label>
+    <center>
+    <div >   	
+	
+    <input type="radio" id="admin" name="types" value="admin">
+    <label for="types">Admin</label>
+	
+	<input type="radio"id="tutor" name="types" value="tutor">
+	<label for="types">tutor</label>
+	
+	<input type="radio" id="user" name="types" value="student">	
+	<label for="types">student</label>
+	</div>
+	
+	<input 
+	type="email" 
+	name="email" id="email" 
+	placeholder="Enter email" 
+	required>
+	<br>
+	<input 
+	type="text" 
+	name="firstname" id="firstname" 
+	placeholder="Enter First Name" 
+	required>
+	<input 
+	type="text"  
+	name="lastname" id="lastname" 
+	placeholder="Enter Last Name" 
+	required>
+	<br>
+	<input 
+	type="password"  
+	name="password1" id="password1" 
+	placeholder="Enter password" 
+	required>
+
+	<input 
+	type="password" 
+	name="password2" id="password2" 
+	placeholder="conform password" 
+	required><br>
+	<button type="submit"  class="btnn"> Submit</button>	<br>
+    if you have account Please:
+    <a class="btnn"  href="/login"> LOGIN</a>
+	</center>
+    </div>
+</form>
+</div>
+	
+
+{% endblock %}

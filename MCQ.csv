@@ -1,0 +1,14 @@
+subject,question,opt1,opt2,opt3,opt4,main
+Reasoning,"In a group of friends, Alice is taller than Bob, Bob is taller than Claire, and Claire is taller than David. Who is the tallest person in the group?",Alice,Bob,Claire,David,Alice
+Reasoning,"If all cats are animals and some animals are mammals, which of the following statements is true?",All_cats_are_mammals,Some_cats_are_mammals,No_cats_are_mammals ,None_of_the_above,Some_cats_are_mammals
+Reasoning,"Find the missing number in the series: 2, 5, 10, 17, ?",22,24,26,29,29
+Reasoning,"If all flowers are plants and some plants are red, which of the following statements is true?",All_flowers_are_red,Some_flowers_are_red,No_flowers_are_red,None_of_the_above,Some_flowers_are_red
+Reasoning,"If Monday is the day after Sunday, Tuesday is two days after Monday, and Wednesday is three days after Tuesday, what day comes after Wednesday?",Sunday,Monday,Thursday,Friday,Thursday
+Reasoning,"Arrange the following words in alphabetical order: Elephant, Dog, Cat, Bear","Cat,Dog,Bear,Elephant","Bear,Cat,Dog,Elephant","Cat,Bear,Dog,Elephant","Bear,Cat,Elephant,Dog","Cat,Bear,Dog,Elephant"
+Reasoning,"If all birds can fly and some penguins are birds, which of the following statements is true?",All_penguins_can_fly,Some_penguins_can_fly,No_penguins_can_fly,None_of_the_above,No_penguins_can_fly
+Reasoning,Complete the analogy: Circle is to Round as Square is to __.,Triangle,Oval,Square,Rectangle,Rectangle
+Reasoning,"If Tom is taller than Jerry, Jerry is taller than Mike, and Mike is taller than Tom, which of the following statements is true?",Tom_is_the_tallest,Jerry_is_the_tallest,Mike_is_the_tallest,There_is_not_enough_information_to_determine,There_is_not_enough_information_to_determine
+Reasoning,"Identify the missing pattern in the series: 2, 4, 8, 16, 32, ?",45,64,80,96,64
+Reasoning,"If all cats have tails and some animals have tails, which of the following statements is true?",All animals have talls,Some animals are cats,No animals have tails,None of the above,Some animals are Cats
+Reasoning,"In a group of friends, John is older than Mary, Mary is older than Sarah, and Sarah is older than David. Who is the youngest person in the group?",John,Mary,Sarsh,David,David
+Reasoning,Complete the analogy: Book is to Author as Song is to __.,Musican,Singer,Dancer,Actor,Singer

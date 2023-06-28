@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+<div class="main">
+<form  method="POST">
+
+	<div class="form">
+	<br>
+	<br>
+  DELETE USERS AND TUTORS HERE::
+    <a class="btnn"  href="/gousertutor"> Delete User or tutor</a>
+	<br>
+	<br>
+  DELTER QUESTIONS
+    <a class="btnn"  href="/gotoquestions"> Delete questions</a>
+	</center>
+    </div>
+</form>
+</div>
+	
+
+{% endblock %}

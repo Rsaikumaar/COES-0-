@@ -1,0 +1,90 @@
+
+{% extends "base.html" %}
+{% block title %}Record{% endblock %}
+{% block content%}
+{% if user.is_authenticated %}
+
+
+<h1 id="gets" style="float: right;">
+		
+	</h1>
+	<h1 id="getss" style="float: right;">
+		
+	</h1>
+<form id="form">
+<input type="text" name="type" value="voice">
+{% for i in range(0,length) %}
+<div class="box">
+{{voice[i].id}}{{voice[i].question}}
+<div >
+<input type="checkbox" id=c{{i}} name="import{{i}}" value="{{voice[i].id}}">
+</div>
+<br>
+speech:{{voice[i].question}}
+
+</div>
+<br>
+
+{% endfor %}	
+<button onclick="subs()" class="btn">submit</button>
+<a href="#top" class="lol">top</a>
+</form>
+
+
+<script type="text/javascript">
+	function check(){
+		var length ={{length}}
+		var count =0
+		var ucount ={{length}}
+			var form = document.getElementById("adds")
+			for(i=0;i<=length;i++)
+		
+		{ field=form.elements[i]
+			if(field.type === "checkbox" && field.checked)
+			{ 	length = length+0
+				count=count+1;
+				ucount=ucount-1;
+				var a ="<h4>"+length+"</h4><br><h4>checked"+count+"</h4><br><h4>unchecked"+ucount+"</h4>"
+
+				if(count>=2)
+				{
+					document.getElementById('gets').innerHTML=a;
+				}
+				else
+				{
+					document.getElementById('gets').innerHTML="";
+				}
+			
+			}
+			
+			
+
+		}
+			
+		
+	}
+	setInterval(check,1);
+function subs(){
+document.getElementById("adds").method = "post";
+var form = document.getElementById("adds")
+		var lens = form.elements.length;
+		var mylist=[]
+		//document.getElementById('show').innerHTML=mylist;
+		
+		for(i=0;i<lens;i++)
+		{ 	field=form.elements[i]
+			if(field.type === "checkbox" && field.checked)
+			{
+				mylist.push(form.elements[i].value)	
+			}
+		}
+
+		document.getElementById("adds").action="{{ url_for('auth.prepare') }}?list=" + encodeURIComponent(mylist.join(','));
+		form.submit();
+}
+
+</script>
+
+{% endif %}
+
+{% endblock %}

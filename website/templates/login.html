@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+ 
+
+    <div class="main">
+            
+                <div class="form" align="center">
+                	<form method="POST">
+                	<h2>Login Here</h2>
+                    <input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    placeholder="EMAIL"
+                    required >
+                    <br>
+                    <input type="password" 
+                    name="password" 
+                    id="password" 
+                    placeholder=" PASSWORD">
+                    <br>
+                    <button class="btnn" type="submit">LOGIN</button>
+	
+                	</form>
+                    <p class="link"> 
+                        forget password
+                     </p>
+                     <a href="/passup" class="btnn">Rest</a>
+                     <p> 
+                        Don't have an account
+                     </p>
+                    
+                    <a href="/sigup" class="btnn">Sign up </a>
+                    Here,Share in with Your Friends
+
+                    <div class="icons">
+                        <a href="https://www.facebook.com/profile.php?id=100037793115402"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="https://www.instagram.com/sa.ikumar__007__009/"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+                    </div>
+
+                </div>
+                    
+                </div>
+    
+{% endblock %}

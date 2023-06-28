@@ -1,0 +1,6 @@
+
+<form class="form"  id="adds" action="{{ url_for('auth.vocal')}}" method="post">
+<input type="hidden" name="lists" value="{{ lists|join(',') }}">
+<button class="btnn" onclick="sub()">submit</button>
+</form>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">

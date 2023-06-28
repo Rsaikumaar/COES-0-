@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Record{% endblock %}
+{% block content%}
+{% if user.is_authenticated %}
+
+<h1>
+	Successfully Uploaded
+</h1>
+<h3>
+click 
+<a href="/">
+  Here
+</a>to Home
+</h3>
+{% endif %}
+{% endblock %}

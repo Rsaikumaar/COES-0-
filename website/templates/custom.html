@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Custom{% endblock %}
+
+{% block content%}
+<script src="{{ url_for('static', filename='js/customization.js') }}"></script>
+<div class="form">
+<h3 align="center">Customization of Online Exam</h3>
+
+<form  id="goto">
+	<div >
+		<label for="email">Name of the examination</label>
+		<input 
+		type="text" 
+		 
+		name="name" id="name" 
+		placeholder="Exam name" 
+		required>
+	</div>
+	<big>Exam Time</big>
+	<div>
+		<label for="hours">Hours</label>
+		<input 
+		type="number" 
+		 
+		name="hours" id="hours" 
+		placeholder="hours" 
+		required>
+	</div>
+	<div>
+		<label for="Min">Minutes</label>
+		<input 
+		type="number" 
+		 
+		name="Min" id="Min" 
+		placeholder="minutes" 
+		required>
+	</div>
+	<div>
+		<label for="seconds">Seconds</label>
+		<input 
+		type="number" 
+		 
+		name="sec" id="sec" 
+		placeholder="seconds" 
+		required>
+	</div>
+
+
+	<div >
+		 <label for='cat'><b>Select catogary</b></label><br>
+		 <input type='radio'  name='Qu' onclick="change3()" id='Import' value="import" required>
+		 <label for='exm'>(1)Import-Questions</label><br>
+		 <input type='radio'  name='Qu' onclick="change3()" id='Upload' value="upload" required>
+		 <label for='exm'>(2)Upload-file</label><br>
+		
+	</div>
+	<div >
+		
+		<p id="add2">
+		</p>
+	</div>
+	<div >
+		
+		<input type="radio" id="voice"  onclick="change()" name="types" value="voice" required>  
+		<label for="radio1">(1)voice </label>
+	</div>
+	<div >
+	
+		<input type="radio" id="nvoice"  onclick="change()" name="types" value="novoice" required>
+		<label for="radio1">(2)non-voice </label>
+	</div>
+	<div>
+	<p id="add">
+		</p>
+		
+		<p id="add1">
+		</p>
+		</div>
+	<br>
+	<button type="submit" class="btnn" onclick="going()" > 
+	Submit
+	</button>
+	<br>
+	
+</div>
+<div style="
+float:left; 
+color:darkred;
+width: 200px;
+height: 300px;
+color: darksalmon;
+background: #E5D3B3;
+border-radius: 30px;
+border: 10px solid burlywood;
+font-family:Sans-serif;    
+transform: translate(0%,-1%);
+border-radius: 15px;
+padding: 25px;
+">
+		<p>
+			<h1>Note:</h1>Please don't Upload Same Questions.
+		</p>
+	</div>
+{% endblock %}

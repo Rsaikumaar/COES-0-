@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Exam{% endblock %}
+{% block content%}
+<style type="text/css">
+	table, th, td,caption {
+  border: 4px solid burlywood;
+  color: brown;
+}
+caption{
+	caption-side: top;
+}
+th, td {
+  padding: 15px;
+}
+ input[type=checkbox]{
+		transform: scale(1.5); 
+	}
+
+</style>
+<form class="form" id="adds" >
+<div  >
+<table >
+	<caption >Questions</caption>
+	<thead>
+		<tr>
+		<th>QuestionId</th>
+		<th>Type</th>
+		<th>question</th>
+		<th>Mail</th>
+		<th>Delete</th>
+	</tr>
+
+	</thead>
+		<tbody>
+		{% for i in range(alen)%}
+	<tr>
+		<th>{{a[i].id}}</th>
+		<th>{{a[i].subject}}</th>
+		<th>{{a[i].question}}&nbsp;&nbsp;{{a[i].lastname}}</th>
+		<th>{{a[i].main}}</th>
+		<th>
+			<input type="checkbox" name="a" id="a" value="{{a[i].id}}">
+		</th>
+	</tr>
+	{% endfor %}
+	{% for i in range(blen)%}
+	<tr>
+		<th>{{b[i].id}}</th>
+		<th>{{b[i].subject}}</th>
+		<th>{{b[i].question}}</th>
+		<th>{{b[i].question}}</th>
+		<th><input type="checkbox" name="b" id="b" value="{{b[i].id}}"></th>
+		
+	</tr>
+	{% endfor %}
+	{% for i in range(clen)%}
+	<tr>
+		<th>{{c[i].id}}</th>
+		<th>{{c[i].subject}}</th>
+		<th>{{c[i].question}}</th>
+		<th>{{c[i].ans}}</th>
+		<th><input type="checkbox" name="c" id="c" value="{{c[i].id}}"></th>
+		
+	</tr>
+	{% endfor %}
+	</tbody>
+	</table>
+	</div>
+	<button onclick="subs()" class="btnn">submit</button>
+	
+</form>
+<a href="#top" class="btn">top</a>
+<script>
+		function subs(){
+		document.getElementById("adds").method = "post";
+	const checkboxesA = document.querySelectorAll('input[name="a"]:checked');
+  	const checkboxesB = document.querySelectorAll('input[name="b"]:checked');
+  	const checkboxesC = document.querySelectorAll('input[name="c"]:checked');
+
+  	const a = [];
+  	const b = [];
+  	const c = [];
+
+ 	 	checkboxesA.forEach(checkbox => a.push(checkbox.value));
+  		checkboxesB.forEach(checkbox => b.push(checkbox.value));
+ 		 checkboxesC.forEach(checkbox => c.push(checkbox.value));
+
+
+
+		
+document.getElementById("adds").action="{{ url_for('auth.removel') }}?lista="+encodeURIComponent(a.join(','))+"&listb=" + encodeURIComponent(b.join(','))+"&listc=" + encodeURIComponent(c.join(','));
+form.submit();
+}
+
+	</script>
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}Exam{% endblock %}
+{% block content%}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+<div class="ds">
+<p id="gets1" >
+	
+</p>
+<p id="gets2"></p>
+<b>Timer:</b><p id="show"></p>
+
+{% for i in range(0,length) %}
+
+<a href="#section{{i}}">{{i}}</a>
+{% if i%5==0 and i!=0 %}
+<br>
+{% endif %}
+{% endfor %}
+
+</div>
+
+<form id="adds" >
+{% for i in range(0,length) %}
+<div class="block">
+<h4>
+<label id="section{{i}}">({{i}}){{exams[i].question }}</label>
+
+<br><br><br>
+&nbsp;&nbsp;&nbsp;
+<input type="text" id="{{i}}" name="exams{{i}}">
+<br><br>
+</div>
+
+{% endfor %}	
+<button onclick="sub()" class="btn">submit</button>
+<a href="#top" class="lol">top</a>
+</form>
+
+<script type="text/javascript">
+	function done(){
+		document.getElementById("navas")=innerHTML="";
+	}
+	setInterval(done, 1000);
+	function check(){
+	var length ={{length}}
+	var count =0
+	var ucount ={{length}}
+	for(i=0;i<=length;i++)
+	{
+		if(document.getElementById(i).value!="")
+		{
+			count=count+1
+			document.getElementById('gets1').innerHTML="Attempted"+count;
+		}
+		else{
+			uncount=length-count;
+			document.getElementById('gets2').innerHTML="Unattempted"+uncount;
+		}
+	}
+	}
+setInterval(check, 1000);
+
+function sub()
+{
+	document.getElementById("adds").method = "post";
+	var form = document.getElementById("adds")
+	var mylist=[]
+	var length ={{length}}
+	var count =0
+	var ucount ={{length}}
+	for(i=0;i<length;i++){
+		if(document.getElementById(i).value!="")
+			{
+				mylist.push(document.getElementById(i).value)
+				
+			}
+
+	}
+	document.getElementById("adds").action="{{ url_for('auth.adds') }}?list=" + encodeURIComponent(mylist.join(','));	
+	form.submit();
+	
+
+}
+var delayTime=1
+		var hours1={{hours}}
+		var minutes1={{minutes}}
+		var seconds1={{seconds}}
+		if(hours1==0 && minutes1==0 && seconds1==0)
+		{
+			delayTime = 1000;
+			setTimeout(sub, delayTime);
+		}
+		else if(hours1==0 && minutes1==0)
+		{
+			delayTime =(seconds1*1000);
+			setTimeout(sub, delayTime);
+		}
+		else if(hours1==0 && seconds1==0)
+		{
+			delayTime=(minutes1*60*1000);
+			setTimeout(sub, delayTime);
+		}
+		else if(seconds1==0 && minutes1==0)
+		{
+			delayTime=(hours1*60*60*1000);
+			setTimeout(sub, delayTime);
+		}
+		else if(hours1==0)
+		{
+			delayTime=((minutes1*60*1000)+(seconds1*1000));
+			setTimeout(sub, delayTime);
+		}
+		else if(minutes1==0)
+		{
+			delayTime=((hours1*60*60*1000)+(seconds1*1000));
+			setTimeout(sub, delayTime);
+		}
+		else if(seconds1==0)
+		{
+			delayTime=((minutes1*60*1000)+(hours1*60*60*1000));
+			setTimeout(sub, delayTime);
+		}
+		else {
+			delayTime=((hours1*60*60*1000)+(minutes1*60*1000)+(minutes1*1000));
+			setTimeout(sub, delayTime);
+		
+		}	
+		delay=hours1*60*60+minutes1*60+seconds1;	
+		function shows(){
+			var hours2 = Math.floor(delay / 3600);
+			var minutes2 = Math.floor((delay % 3600) / 60);
+			var seconds2 = delay % 60;
+			
+			document.getElementById('show').innerHTML=hours2+":"+minutes2+":"+seconds2;
+			delay--;
+		}
+
+		setInterval(shows, 1000);
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+
+{% extends "base.html" %}
+{% block title %}Record{% endblock %}
+{% block content%}
+{% if user.is_authenticated %}
+
+<form class="form" align="center" action="/upload11" method="post" >
+	<h1>UPLOAD ONLY CSV FILE</h1>
+	<input type="file" name="file"placeholder="CSV-ONLY" required>
+	<br><br>
+	<input type="text" name="ename" value="{{name}}" readonly>
+	<br><br>
+	Hours:<input type="text" name="hours" value="{{hours}}" readonly>
+	<br><br>
+	Minutes:<input type="text" name="minutes" value="{{minutes}}" readonly>
+	<br><br>
+	Seconds:<input type="text" name="seconds" value="{{seconds}}" readonly>
+	<br><br>
+	Do you want to upload this data to main data base?
+	<br><br>
+	<input type="radio" name="type"  value="yes" required >
+	YES
+	<br><br>
+	<input type="radio" name="type" value="no"  required >
+	NO
+	<br><br>
+	<input class="btnn" type="submit" value="submit">
+</form>
+{% endif %}
+
+{% endblock %}
+
+
+

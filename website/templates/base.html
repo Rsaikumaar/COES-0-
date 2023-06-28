@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/icon4.jpg') }}">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+    <script>
+        function updateTime() {
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+
+            // Format the time values to add leading zeros if needed
+            hours = (hours < 10 ? "0" : "") + hours;
+            minutes = (minutes < 10 ? "0" : "") + minutes;
+            seconds = (seconds < 10 ? "0" : "") + seconds;
+
+            var formattedTime = hours + ":" + minutes + ":" + seconds;
+            document.getElementById("current-time").textContent = formattedTime;
+        }
+
+        // Update the time every second
+        setInterval(updateTime, 1000);
+    </script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+  <title> {% block title%} Home {% endblock%} </title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/icon4.ico') }}">
+</head>
+<body>
+  <nav id="navas">
+    <ul>
+      <li>
+        <a href="/" class="logob">     	
+          <img src="{{ url_for('static', filename='/images/icon4.jpg') }}">        
+        <span class="nav-item">&nbsp;&nbsp;&nbsp;{{user.firstname}}&nbsp;{{user.lastname}}</span>
+        </a>
+
+      </li>
+      <!--
+      <li><a href="#">
+        <i class="fas fa-check"></i>
+        <span class="nav-item">Test-Exams</span>
+      </a></li>
+    -->
+
+      <li><a href="/about">
+        <i class="fas fa-home"></i>
+        <span class="nav-item">Home</span>
+      </a></li>
+
+     {% if user.is_authenticated %}
+      {% if user.types == 'tutor' %}
+      <li><a href="/dashboard">
+        <i class="fas fa-user"></i>
+        <span class="nav-item">Dashboard</span>
+      </a></li>
+
+      
+      
+      
+      <li><a href="/custom">
+        <i class="fas fa-wrench"></i>
+        <span class="nav-item">Customization</span>
+      </a></li>
+
+      <li><a href="/tests">
+        <i class="fas fa-check"></i>
+        <span class="nav-item">Test-Exams</span>
+      </a></li>
+
+      <li><a href="/result">
+        <i class="fas fa-tasks"></i>
+        <span class="nav-item">Results</span>
+      </a></li>
+
+      {% elif user.types == 'admin' %}
+      <li><a href="/useredit">
+        <i class="fas fa-tasks"></i>
+        <span class="nav-item">Edits</span>
+      </a></li>
+      <li><a href="/dashboard">
+        <i class="fas fa-user"></i>
+        <span class="nav-item">Dashboard</span>
+      </a></li>
+
+      
+
+      <li><a href="/tests">
+        <i class="fas fa-check"></i>
+        <span class="nav-item">Test-Exams</span>
+      </a></li>
+      
+      <li><a href="/custom">
+        <i class="fas fa-wrench"></i>
+        <span class="nav-item">Customization</span>
+      </a></li>
+
+      <li><a href="/result">
+        <i class="fas fa-tasks"></i>
+        <span class="nav-item">Results</span>
+      </a></li>
+
+      {% else %}
+      
+      <li><a href="/dashboard">
+        <i class="fas fa-user"></i>
+        <span class="nav-item">Dashboard</span>
+      </a></li>
+
+      <li><a href="/tests">
+        <i class="fas fa-list-alt"></i>
+        <span class="nav-item">Exams</span>
+      </a></li>
+      <li><a href="/result">
+        <i class="fas fa-tasks"></i>
+        <span class="nav-item">Results</span>
+      </a></li>      
+      {% endif %}
+      <li><a href="/about">
+        <i class="fas fa-info"></i>
+        <span class="nav-item">About-Us</span>
+      </a></li>
+      
+      <li><a href="/contact">
+        <i class="fas fa-phone"></i>
+        <span class="nav-item">Contact-Us</span>
+      </a></li>
+      
+      <li><a href="/help">
+        <i class="fas fa-question-circle"></i>
+        <span class="nav-item">Help</span>
+      </a></li>
+
+      <li><a href="/policy">
+        <i class="fas fa-shield-alt"></i>
+        <span class="nav-item">Privacy Policy</span>
+      </a></li>
+
+      <li><a href="/logout" class="logout">
+        <i class="fas fa-sign-out-alt"></i>
+        <span class="nav-item">Logout</span>
+      </a></li>
+
+      {% else %}
+
+      <li><a href="/login">
+        <i class="fas fa-sign-in-alt"></i>
+        <span class="nav-item">Login</span>
+      </a></li>
+      
+      <li><a href="/sigup">
+        <i class="fas fa-registered"></i>      
+        <span class="nav-item">Signup</span>
+      </a></li>
+      <li><a href="/about">
+        <i class="fas fa-info"></i>
+        <span class="nav-item">About-Us</span>
+      </a></li>
+      
+      <li><a href="/contact">
+        <i class="fas fa-phone"></i>
+        <span class="nav-item">Contact-Us</span>
+      </a></li>
+      
+      <li><a href="/help">
+        <i class="fas fa-question-circle"></i>
+        <span class="nav-item">Help</span>
+      </a></li>
+
+      <li><a href="/policy">
+        <i class="fas fa-shield-alt"></i>
+        <span class="nav-item">Privacy Policy</span>
+      </a></li>
+      {% endif %}
+            
+			
+  </nav>
+
+  
+  {% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+   {% for category,message in messages %}
+   {% if category == 'error' %}
+   <div class="alert alert-danger alert-dismissable custom-alertdanger fade show" role='alert'>
+    {{message}}
+    <button type='button' class='close' data-dismiss='alert'>
+      <span aria-hidden='true'>
+        &times;
+      </span>
+    </button>
+   </div>
+   {% elif category =='warning' %}
+
+   <div class="alert alert-danger alert-dismissable custom-alertwarn fade show" role='alert'>
+    {{message}}
+    <button type='button' class='close' data-dismiss='alert'>
+      <span aria-hidden='true'>
+        &times;
+      </span>
+    </button>
+   </div>
+   
+   {% else %}
+   <div class="alert alert-light alert-dismissable custom-alertsuccess fade show" role='alert'>
+    {{message}}
+    <button type='button' class='close' data-dismiss='alert'>
+      <span aria-hidden='true'>
+        &times;
+      </span>
+    </button>
+   </div>
+   {% endif %}
+   {% endfor%}
+   {% endif %}
+   {% endwith %}
+   {% if user.is_authenticated %}
+    
+<h5 align="right" id="current-time"></h5>
+    {% endif %}
+   <div class="cotainer">
+    {% block content %}
+    {% endblock %}
+   </div>
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+<script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous">
+      </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    >
+    </script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Exam{% endblock %}
+{% block content%}
+<style type="text/css">
+	table, th, td,caption {
+  border: 4px solid burlywood;
+  color: brown;
+}
+caption{
+	caption-side: top;
+}
+th, td {
+  padding: 15px;
+}
+ input[type=checkbox]{
+		transform: scale(1.0); 
+		position: relative;
+		left: 5%;
+	}
+
+</style>
+<form class="form" id="adds" >
+<div  >
+<table >
+	<caption >Users and Tutors</caption>
+	<thead>
+		<tr>
+		<th>UserId</th>
+		<th>Type</th>
+		<th>Name</th>
+		<th>Mail</th>
+		<th>Delete</th>
+	</tr>
+
+	</thead>
+		<tbody>
+		{% for i in range(alen)%}
+	<tr>
+		<th>{{useri[i].id}}</th>
+		<th>{{useri[i].types}}</th>
+		<th>{{useri[i].firstname}}&nbsp;&nbsp;{{useri[i].lastname}}</th>
+		<th>{{useri[i].email}}</th>
+		<th>
+			<input type="checkbox" name="deleteu" id="deleteu" value="{{useri[i].id}}">
+		</th>
+	</tr>
+	{% endfor %}
+	{% for i in range(blen)%}
+	<tr>
+		<th>{{tutor[i].id}}</th>
+		<th>{{tutor[i].types}}</th>
+		<th>{{tutor[i].firstname}}&nbsp;&nbsp;{{tutor[i].lastname}}</th>
+		<th>{{tutor[i].email}}</th>
+		<th><input type="checkbox" name="deleteu" id="deleteu" value="{{tutor[i].id}}"></th>
+		
+	</tr>
+	{% endfor %}
+	</tbody>
+	</table>
+	</div>
+	<button onclick="subs()" class="btnn">submit</button>
+	
+</form>
+<a href="#top" class="btn">top</a>
+<script>
+		function subs(){
+document.getElementById("adds").method = "post";
+var form = document.getElementById("adds")
+		var lens = form.elements.length;
+		var mylist=[]
+		//document.getElementById('show').innerHTML=mylist;
+		
+		for(i=0;i<lens;i++)
+		{ 	field=form.elements[i]
+			if(field.type === "checkbox" && field.checked)
+			{
+				mylist.push(form.elements[i].value)	
+			}
+		}
+
+		document.getElementById("adds").action="{{ url_for('auth.remove') }}?list=" + encodeURIComponent(mylist.join(','));
+		form.submit();
+}
+
+	</script>
+{% endblock %}

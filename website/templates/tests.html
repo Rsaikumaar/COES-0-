@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Custom{% endblock %}
+
+
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+{% if user.is_authenticated %}
+<div class="form">
+	<br>
+<h1 align="center">TEST YOURSELF<br>
+<br>
+<a class="btnn" href="\voice" >Voice</a>
+<br>
+<a class="btnn" href="\as"> Nvoice M_C_Q</a>
+<br>
+<a class="btnn" href="\fill"> Nvoice FILL_IN_THE_BLANKS</a>
+<br>
+{% if user.types=='admin' or user.types=='tutor'%}
+<a class="btnn" href="\otherexams">others if you want</a>
+</h1>
+</div>
+{% endif %}
+{% endif %}
+
+
+{% endblock %}

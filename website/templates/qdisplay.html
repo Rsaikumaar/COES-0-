@@ -1,0 +1,34 @@
+
+<div class="form">
+
+<h1>{{voice[i].question}}</h1>
+<a class="btnn" id="as" href="{{url_for('auth.buffer',i=i)}}">go_to_record</a>
+<p  id="countdown"></p>
+  
+</div>
+
+
+<script type="text/javascript">
+
+function autoClickLink(linkId, delay) {
+  setTimeout(function() {
+    var linkElement = document.getElementById('as');
+      linkElement.click();  // Simulate a click on the link element
+  }, delay * 1000);  // Convert delay to milliseconds
+}
+
+// Usage example
+var linkId = "myLink";  // Replace with the actual ID of your link element
+var delaySeconds = 12;  // Set the delay in seconds
+
+autoClickLink(linkId, delaySeconds);
+
+function times(){
+	
+	document.getElementById("countdown").innerHTML=delaySeconds;
+	delaySeconds--;
+}
+setInterval(times,1000)
+</script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+

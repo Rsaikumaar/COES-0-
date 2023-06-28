@@ -1,0 +1,495 @@
+{% extends "base.html" %}
+{% block title %}Result{% endblock %}
+
+{% block content%}
+<center>
+<h1 class="form1 clear">
+	Report Card
+</h1>
+	
+</center>
+
+
+
+
+{% if Mlv and tlv and nlv and mlv %}
+<div class="form1 clear">Voice's</div>
+<style type="text/css">
+.clear {
+  clear: left;
+  display: hide;
+}
+</style>
+
+{% for i in range(Mlv) %}
+	{% set omar=mlv[i] %}
+	{% set les =33 %}
+	{% set avr =50 %}
+	{% set good =100 %}
+	{% set tot=tlv[i] %}
+	{% set mlves=((les/100)*tot) | int %}
+	{% set mavr=((avr/100)*tot) | int %}
+	{% set mgood=(good//100)*tot | int %}
+	
+
+	{% if omar >= 0 and omar <= mlves %}
+
+
+
+	<div class="form3">
+	
+	Name oƒ The Exam:{{nlv[i]}}<br>
+	Total marks:{{tlv[i]}}<br>
+	obtain marks:{{mlv[i] }}
+
+	
+	<div  class="circle3" ></div>
+	</div>
+	
+	<style type="text/css">
+	 .form3{
+    width: auto;
+    height: auto;
+    float:left;
+    margin-left: 10px;
+    margin-top: 10px ;
+    color: darkred;
+    background: #E5D3B3;
+    border-radius: 30px;
+    border: 10px solid burlywood;
+    
+    font-family: 
+Sans-serif;
+    
+    transform: translate(0%,-1%);
+    border-radius: 15px;
+  
+}
+
+	 .circle3 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(#FF5733 90%,burlywood 10%);
+    }	
+	</style>
+
+	{% elif omar > mlves and omar < mavr %}
+
+	<div class="form2">
+		
+	Name oƒ The Exam:{{nlv[i]}}<br>
+	Total marks:{{tlv[i]}}<br>
+	obtain marks:{{mlv[i] }}
+	
+		
+	<div  class="circle2" ></div>
+	</div>
+
+	<style type="text/css">
+		 .form2{
+    width: auto;
+    height: auto;
+    float:left;
+    margin-left: 10px;
+    margin-top: 10px ;
+    color: darkred;
+    background: #E5D3B3;
+    border-radius: 30px;
+    border: 10px solid burlywood;
+    
+    font-family: 
+Sans-serif;
+    
+    transform: translate(0%,-1%);
+    border-radius: 15px;
+  
+}
+
+	 .circle2 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(darkred 50%,burlywood 50%);
+    
+  }
+</style>
+
+
+	{% elif omar >= mavr and omar <= mgood %}
+	<div class="form1">
+		
+	Name oƒ The Exam:{{nlv[i]}}<br>
+	Total marks:{{tlv[i]}}<br>
+	obtain marks:{{mlv[i] }}
+		{{omar}}
+
+	<div  class="circle1" ></div>
+	</div>
+
+	<style type="text/css">
+		 .form1{
+    width: auto;
+    height: auto;
+    float:left;
+    margin-left: 10px;
+    margin-top: 10px ;
+    color: darkred;
+    background: #E5D3B3;
+    border-radius: 30px;
+    border: 10px solid burlywood;
+    
+    font-family: 
+Sans-serif;
+    
+    transform: translate(0%,-1%);
+    border-radius: 15px;
+  
+}
+
+	 .circle1 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(burlywood 90%,#FF5733 10%);
+  }
+</style>
+
+
+	{% endif %}
+
+
+
+{% endfor %}
+{% endif%}
+
+{% if Ml and tl and nl and ml %}
+
+<div class="form1 clear">MCQ's</div>
+<style type="text/css">
+	
+.clear {
+  clear: left;
+  display: hide;
+}
+</style>
+
+{% for i in range(Ml) %}
+	{% set omar=ml[i] %}
+	{% set les =33 %}
+	{% set avr =50 %}
+	{% set good =100 %}
+	{% set tot=tl[i] %}
+	{% set mles=((les/100)*tot) | int %}
+	{% set mavr=((avr/100)*tot) | int %}
+	{% set mgood=(good//100)*tot | int %}
+	
+
+	{% if omar >= 0 and omar <= mles %}
+
+
+
+	<div class="form3">
+	
+	Name oƒ The Exam:{{nl[i]}}<br>
+	Total marks:{{tl[i]}}<br>
+	obtain marks:{{ml[i] }}
+
+	
+	<div  class="circle3" ></div>
+	</div>
+	
+	<style type="text/css">
+	 .form3{
+    width: auto;
+    height: auto;
+    float:left;
+    margin-left: 10px;
+    margin-top: 10px ;
+    color: darkred;
+    background: #E5D3B3;
+    border-radius: 30px;
+    border: 10px solid burlywood;
+    
+    font-family: 
+Sans-serif;
+    
+    transform: translate(0%,-1%);
+    border-radius: 15px;
+  
+}
+
+	 .circle3 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(#FF5733 90%,burlywood 10%);
+    }	
+	</style>
+
+	{% elif omar > mles and omar < mavr %}
+
+	<div class="form2">
+		
+	Name oƒ The Exam:{{nl[i]}}<br>
+	Total marks:{{tl[i]}}<br>
+	obtain marks:{{ml[i] }}
+	
+		
+	<div  class="circle2" ></div>
+	</div>
+
+	<style type="text/css">
+		 .form2{
+    width: auto;
+    height: auto;
+    float:left;
+    margin-left: 10px;
+    margin-top: 10px ;
+    color: darkred;
+    background: #E5D3B3;
+    border-radius: 30px;
+    border: 10px solid burlywood;
+    
+    font-family: 
+Sans-serif;
+    
+    transform: translate(0%,-1%);
+    border-radius: 15px;
+  
+}
+
+	 .circle2 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(darkred 50%,burlywood 50%);
+    
+  }
+</style>
+
+
+	{% elif omar >= mavr and omar <= mgood %}
+	<div class="form1">
+		
+	Name oƒ The Exam:{{nl[i]}}<br>
+	Total marks:{{tl[i]}}<br>
+	obtain marks:{{ml[i] }}
+		{{omar}}
+
+	<div  class="circle1" ></div>
+	</div>
+
+	<style type="text/css">
+		 .form1{
+    width: auto;
+    height: auto;
+    float:left;
+    margin-left: 10px;
+    margin-top: 10px ;
+    color: darkred;
+    background: #E5D3B3;
+    border-radius: 30px;
+    border: 10px solid burlywood;
+    
+    font-family: 
+Sans-serif;
+    
+    transform: translate(0%,-1%);
+    border-radius: 15px;
+  
+}
+
+	 .circle1 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(burlywood 90%,#FF5733 10%);
+  }
+</style>
+
+
+	{% endif %}
+
+
+
+{% endfor %}
+{% endif%}
+
+
+<!-- fills-->
+
+
+{% if Mlf and tlf and nlf and mlf %}
+<div class="form1 clear">Fill-in <br>the<br>Blanks</div>
+<style type="text/css">
+	
+.clear {
+  clear: left;
+  display: hide;
+}
+</style>
+
+{% for i in range(Mlf) %}
+	{% set omar=mlf[i] %}
+	{% set les =33 %}
+	{% set avr =50 %}
+	{% set good =100 %}
+	{% set tot=tlf[i] %}
+	{% set mlfes=((les/100)*tot) | int %}
+	{% set mavr=((avr/100)*tot) | int %}
+	{% set mgood=(good//100)*tot | int %}
+	
+
+	{% if omar >= 0 and omar <= mlfes %}
+
+
+
+	<div class="form3">
+
+	Name oƒ The Exam:{{nlf[i]}}<br>
+	Total marks:{{tlf[i]}}<br>
+	obtain marks:{{mlf[i] }}
+
+	
+	<div  class="circle3" ></div>
+	</div>
+	
+	<style type="text/css">
+	 .form3{
+    width: auto;
+    height: auto;
+    float:left;
+    margin-left: 10px;
+    margin-top: 10px ;
+    color: darkred;
+    background: #E5D3B3;
+    border-radius: 30px;
+    border: 10px solid burlywood;
+    
+    font-family: 
+Sans-serif;
+    
+    transform: translate(0%,-1%);
+    border-radius: 15px;
+  
+}
+
+	 .circle3 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(#FF5733 90%,burlywood 10%);
+    }	
+	</style>
+
+	{% elif omar > mlfes and omar < mavr %}
+
+	<div class="form2">
+	Name oƒ The Exam:{{nlf[i]}}<br>
+	Total marks:{{tlf[i]}}<br>
+	obtain marks:{{mlf[i] }}
+	
+		
+	<div  class="circle2" ></div>
+	</div>
+
+	<style type="text/css">
+		 .form2{
+    width: auto;
+    height: auto;
+    float:left;
+    margin-left: 10px;
+    margin-top: 10px ;
+    color: darkred;
+    background: #E5D3B3;
+    border-radius: 30px;
+    border: 10px solid burlywood;
+    
+    font-family: 
+Sans-serif;
+    
+    transform: translate(0%,-1%);
+    border-radius: 15px;
+  
+}
+
+	 .circle2 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(darkred 50%,burlywood 50%);
+    
+  }
+</style>
+
+
+	{% elif omar >= mavr and omar <= mgood %}
+	<div class="form1">
+	Name oƒ The Exam:{{nlf[i]}}<br>
+	Total marks:{{tlf[i]}}<br>
+	obtain marks:{{mlf[i] }}
+		{{omar}}
+
+	<div  class="circle1" ></div>
+	</div>
+
+	<style type="text/css">
+		 .form1{
+    width: auto;
+    height: auto;
+    float:left;
+    margin-left: 10px;
+    margin-top: 10px ;
+    color: darkred;
+    background: #E5D3B3;
+    border-radius: 30px;
+    border: 10px solid burlywood;
+    
+    font-family: 
+Sans-serif;
+    
+    transform: translate(0%,-1%);
+    border-radius: 15px;
+  
+}
+
+	 .circle1 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(burlywood 90%,#FF5733 10%);
+  }
+</style>
+
+
+	{% endif %}
+
+
+
+{% endfor %}
+{% endif%}
+
+
+
+{% if answers and lists%}
+<br>
+<style type="text/css">
+	input[type=text]{
+		color: lightgreen;
+		height: 30px;
+		width: 40px;
+
+	}
+</style>
+<form class="form" id="adds" action="{{ url_for('auth.store',types=types)}}" method="post">
+<input type="hidden" name="ansd" value="{{ ansd|join(',') }}">
+    <input type="hidden" name="answers" value="{{ answers|join(',') }}">
+    <input type="hidden" name="lists" value="{{ lists|join(',') }}">
+<button class="btnn" onclick="sub()">submit</button>
+</form>
+<script>
+
+</script>
+{% endif %}
+{% endblock %}

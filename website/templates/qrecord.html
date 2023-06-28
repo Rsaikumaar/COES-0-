@@ -1,0 +1,12 @@
+<div class="form">
+
+{% if i<=(count-1)%}
+<h1>
+  <a class="btnn" href="{{url_for('auth.process',i=i+1,text=text)}}">
+    go to next
+  </a>
+</h1>
+{% endif%}
+  
+</div>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">

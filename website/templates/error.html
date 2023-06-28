@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content%}
+<h1>Error</h1>
+    <p>{{ error }}</p>
+    <p>Line: {{ line }}</p>
+    <a href="/">Go to Home Page</a>
+
+<style>
+p{
+    color: red;
+    font-size: 30px;
+}
+a{
+color: blue;
+    font-size: 30px;   
+}
+</style>
+
+{% endblock %}
+    

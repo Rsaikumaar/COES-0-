@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content%}
+<div class="form"> 
+
+<h1><b> <center>Details</center></b> 
+
+	<b>Name:</b>
+	
+	{{(user.firstname+user.lastname)}} 
+	<br>
+	<b>Email:</b>
+	
+	{{user.email}}
+	<br>
+	<b>Type:</b>
+	
+	{{user.types}}
+	<br>
+	<b>click below button to view results</b>
+	<a href="/result" class='btnn'>My results</a>
+	</h1>
+	</div>
+
+
+
+{% endblock%}

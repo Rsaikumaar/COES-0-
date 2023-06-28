@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content%}
+
+<title>update</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">	
+<div class="form">
+		<form action="/updating" method="post">
+			<h1 align="center">
+				Enter your register Email-id
+			</h1>
+			<input type="email" id="email" name="email" placeholder="EMAIL" required>
+			<br>
+			<center>
+			<button class="btnn" type="submit">Submit </button>	
+			</center>
+			
+
+		</form>
+		<p class="link"> 
+          Don't have an account
+          <a href="/sigup">Sign up </a></p>
+          <div class="icons">
+                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>&nbsp;&nbsp;
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+                    </div>
+	</div>
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+{% endblock %}

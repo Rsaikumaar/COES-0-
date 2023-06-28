@@ -1,0 +1,23 @@
+<div class="form">
+<a class="btnn" id="mylink" onclick="add()" href="{{url_for('auth.record',i=i)}}">start_to_record</a>
+
+<p id=ass ></p>
+  
+</div>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+
+
+<script type="text/javascript">
+	function handleClick() {
+  add(); // Call the add() function
+  setTimeout(function() {
+    window.location.href = document.getElementById("mylink").href; // Navigate to the next page
+  }, 1000); // Delay for 1 second before navigating
+}
+
+function add() {
+  document.getElementById('ass').innerHTML = "<h1><big> start speaking </big></h1><h1><big>Speak while buffering</big></h1>";
+  document.getElementById('mylink').innerHTML = "";  
+}
+
+</script>

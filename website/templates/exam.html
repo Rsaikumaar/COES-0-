@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	{% set i=num %}
+{% set k=0 %}
+{% set l=1 %}
+{% set a=0 %}
+{% set i=num %}
+{% set num=0 %}
+
+
+<script type="text/javascript">
+		function defun() 
+		{  
+
+			let adata = JSON.parse({{ op1 | tojson }})
+			var count = JSON.parse({{ count | tojson }})
+			let a1=document.getElementById('a1').value
+			console.log(a1)
+			a1=a1.replace(/\s/g,"")
+			console.log(a1)
+			let a2=document.getElementById('a2').value
+			console.log(a2)
+			a2=a2.replace(/\s/g,"")
+			console.log(a2)
+			let a3=document.getElementById('a3').value
+			console.log(a3)
+			a3=a3.replace(/\s/g,"")
+			console.log(a3)
+			let a4=document.getElementById('a4').value
+			console.log(a4)
+			a4=a4.replace(/\s/g,"")
+			console.log(a4)
+			
+			for(i=1;i<=count;i++)
+			{
+			if(a1 === adata[i])
+				{
+				var k=document.getElementById("a1");
+				k.checked = true;
+				}
+			else if(a2 === adata[i])
+				{
+				
+				var k=document.getElementById("a2");
+				k.checked = true;
+				}
+			else if(a3 === adata[i])
+				{
+				
+				var k=document.getElementById("a3");
+				k.checked = true;
+				}
+			else if(a4 === adata[i])
+				{
+				
+				var k=document.getElementById("a4");
+				k.checked = true;
+				}
+			}
+		}
+		
+		function fun(){
+			if(document.getElementById("a1").checked == true){
+
+			var a1=document.getElementById("a1").value;
+			document.getElementById("lo").method = "post";
+			document.getElementById("lo").action= "{{url_for('auth.sscc',ans=exams[i].opt1,val=i-1,num=k)}}";
+			}
+			else if(document.getElementById("a2").checked == true){
+				var a1=document.getElementById("a2").value;
+				document.getElementById("lo").method = "post";
+				document.getElementById("lo").action= "{{url_for('auth.sscc',ans=exams[i].opt2,val=i-1,num=k)}}";
+			}else if(document.getElementById("a3").checked == true){
+				var a1=document.getElementById("a3").value;
+				document.getElementById("lo").method = "post";
+				document.getElementById("lo").action= "{{url_for('auth.sscc',ans=exams[i].opt3,val=i-1,num=k)}}";
+			}else if(document.getElementById("a4").checked == true){
+				var a1=document.getElementById("a4").value;
+				document.getElementById("lo").method = "post";
+				document.getElementById("lo").action= "{{url_for('auth.sscc',ans=exams[i].opt4,val=i-1,num=k)}}";
+			}else {
+				var a1='no'
+				document.getElementById("lo").method = "post";
+				document.getElementById("lo").action= "{{url_for('auth.sscc',ans=0,val=i-1,num=k)}}";
+			}
+		}
+		function fun1(){
+			if(document.getElementById("a1").checked == true){
+
+			var a1=document.getElementById("a1").value;
+			document.getElementById("lo").method = "post";
+			document.getElementById("lo").action= "{{url_for('auth.sscc',ans=exams[i].opt1,val=i+1,num=l)}}";
+			}
+			else if(document.getElementById("a2").checked == true){
+				var a1=document.getElementById("a2").value;
+				document.getElementById("lo").method = "post";
+				document.getElementById("lo").action= "{{url_for('auth.sscc',ans=exams[i].opt2,val=i+1,num=l)}}";
+			}else if(document.getElementById("a3").checked == true){
+				var a1=document.getElementById("a3").value;
+				document.getElementById("lo").method = "post";
+				document.getElementById("lo").action= "{{url_for('auth.sscc',ans=exams[i].opt3,val=i+1,num=l)}}";
+			}else if(document.getElementById("a4").checked == true){
+				var a1=document.getElementById("a4").value;
+				document.getElementById("lo").method = "post";
+				document.getElementById("lo").action= "{{url_for('auth.sscc',ans=exams[i].opt4,val=i+1,num=l)}}";
+			}else {
+				var a1=0
+				document.getElementById("lo").method = "post";
+				document.getElementById("lo").action= "{{url_for('auth.sscc',ans=0,val=i+1,num=l)}}";
+			}
+		}
+		function goon(){
+			if(document.getElementById("a1").checked == true){
+				var a1=document.getElementById("a1").value;
+			document.getElementById("lo").method = "post";
+			document.getElementById("lo").action= "{{url_for('auth.sscr',ans=exams[i].opt1,val=i+1,num=l)}}";
+			}
+			else if(document.getElementById("a2").checked == true){
+				var a1=document.getElementById("a2").value;
+			document.getElementById("lo").method = "post";
+			document.getElementById("lo").action= "{{url_for('auth.sscr',ans=exams[i].opt2,val=i+1,num=l)}}";
+			}
+			else if(document.getElementById("a3").checked == true){
+				var a1=document.getElementById("a3").value;
+			document.getElementById("lo").method = "post";
+			document.getElementById("lo").action= "{{url_for('auth.sscr',ans=exams[i].opt3,val=i+1,num=l)}}";
+			}
+			else if(document.getElementById("a4").checked == true){
+				var a1=document.getElementById("a4").value;
+			document.getElementById("lo").method = "post";
+			document.getElementById("lo").action= "{{url_for('auth.sscr',ans=exams[i].opt4,val=i+1,num=l)}}";
+			}else {
+				var a1=0
+			document.getElementById("lo").method = "post";
+			document.getElementById("lo").action= "{{url_for('auth.sscr',ans=0,val=i+1,num=l)}}";
+			}
+			
+		}
+	
+		
+</script>
+</head>
+<body onload="defun()">
+<h1 id='k'></h1>
+<h1 id='l'></h1>
+<form id="lo">
+	{% if i==1 or i<=counts %}
+<h1>{{exams[i].question}}</h1>
+<h2><input type='radio' id='a1' name='a' value={{exams[i].opt1}}> {{exams[i].opt1|replace("_", " ")}}</h2>
+<h2><input type='radio' id='a2' name='a' value={{exams[i].opt2}}>{{exams[i].opt2|replace("_", " ")}}</h2>
+<h2><input type='radio' id='a3' name='a' value={{exams[i].opt3}}>{{exams[i].opt3|replace("_", " ")}}</h2>
+<h2><input type='radio' id='a4' name='a' value={{exams[i].opt4}}>{{exams[i].opt4|replace("_", " ")}}</h2>
+	
+	{% endif%}
+	
+
+<h3>
+	<h4 id="show"></h4>
+	{% if i<1 %}
+	{% else %}
+	<button onclick="fun()"> previous</button>
+	{% endif %}
+	{% if i==2 or i<=(counts-2) %}
+	<button onclick="fun1()"> Next </button>
+	{% endif %}
+	
+	{% if i==(counts-1) %}
+	<button onclick="goon()"> submit</button>
+	{% endif %}
+
+	 
+</h3>
+<p align="right">
+
+</p>
+</form>
+</body>
+</html>

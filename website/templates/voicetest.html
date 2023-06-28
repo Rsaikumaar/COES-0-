@@ -1,0 +1,56 @@
+<div class="form">
+  click<button id="welcome" class="btnn" onclick="add()" >procced</button>to go next.
+  <h1 id="head"></h1>
+  <ul>
+    <li id="i1"></li>
+    <li id="i2"></li>
+    <li id="i3"></li>
+    <li id="i4"></li>
+    <li id="i5"></li>
+    <li id="i6"></li>
+  </ul>
+    
+  </div>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+  
+  <script type="text/javascript">
+  
+    //function handleClick() {
+    //add(); // Call the add() function
+    //setTimeout(function() {
+      //window.location.href = document.getElementById("welcome").href; // Navigate to the next page
+    //}, 6000000000); // Delay for 1 second before navigating
+  //}
+  
+  function add() {
+    document.getElementById("welcome").innerHTML="";
+    var a='Welcome to the voice test..' 
+    document.getElementById("head").innerHTML=a;
+    var speech = new SpeechSynthesisUtterance(a);
+    window.speechSynthesis.speak(speech);
+    
+    var list = ['to take this test put on your headset with good quality of mike.',
+      'Before going to start the rest please listen to instructions carfully.',
+      'you will shown a text and given time to view properly.',
+      'and then you will be send to record option please speak while buffer goes round.',
+      'while speaking speak normaly like converstion don"t speak more loud and less voice.','please wait for a moment'];
+    for(i=1;i<=6;i++)
+    {
+      var a='i'+String(i);
+    document.getElementById(a).innerHTML=list[i];  
+    var speech = new SpeechSynthesisUtterance(list[i]);
+    window.speechSynthesis.speak(speech);
+    }
+    /*document.getElementById("i1").innerHTML="";
+    document.getElementById("i2").innerHTML=""; 
+    document.getElementById("i3").innerHTML="";
+    document.getElementById("i4").innerHTML=""; 
+    document.getElementById("i5").innerHTML="";
+    document.getElementById("i6").innerHTML="";
+    */
+    setTimeout(function() {
+          window.location.href = '/voicetest';
+        }, 60000);
+  }
+  
+  </script>

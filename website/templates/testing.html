@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block title %}Exam{% endblock %}
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/makelogs.css') }}">
+
+</style>
+<div class="ds">
+<p id="gets" >
+	welcome
+</p>
+<b>Timer:</b><p id="show"></p>
+
+{% for i in range(0,length) %}
+
+<a href="#section{{i}}">{{i}}</a>
+{% if i%5==0 and i!=0 %}
+<br>
+{% endif %}
+{% endfor %}
+
+</div>
+
+<form id="adds" >
+{% for i in range(0,length) %}
+<div class="block">
+<h4>
+<label id="section{{i}}">({{i}}){{exams[i].question }}</label>
+
+<br><br><br>
+&nbsp;&nbsp;&nbsp;
+<input type="radio" id="a{{i}}" value="{{exams[i].opt1}}" name="exams{{i}}">{{exams[i].opt1 | replace("_", " ")}}
+<br><br>
+&nbsp;&nbsp;&nbsp;
+<input type="radio" id="b{{i}}" value="{{exams[i].opt2}}" name="exams{{i}}">{{exams[i].opt2 | replace("_", " ")}}
+<br><br>
+&nbsp;&nbsp;&nbsp;
+<input type="radio" id="c{{i}}" value="{{exams[i].opt3}}" name="exams{{i}}">{{exams[i].opt3 | replace("_", " ")}}
+<br><br>
+&nbsp;&nbsp;&nbsp;
+<input type="radio" id="d{{i}}" value="{{exams[i].opt4}}" name="exams{{i}}">{{exams[i].opt4 | replace("_", " ")}}
+<br><br>
+</h4>
+</div>
+
+{% endfor %}	
+<button onclick="sub()" class="btn">submit</button>
+<a href="#top" class="lol">top</a>
+</form>
+
+
+<script type="text/javascript">
+	function check(){
+
+
+	var length ={{length}}
+	var count =0
+	var ucount ={{length}}
+	for(i=0;i<=length;i++)
+	{	
+		var a1='a'+i
+		var a2='b'+i
+		var a3='c'+i
+		var a4='d'+i
+		if(document.getElementById(a1).checked)
+		{
+			var count=count+1;
+			var ucount=ucount-1;
+			var a ="<h4>attempted"+count+"</h4><br><h4>unattempted"+ucount+"</h4>"
+			document.getElementById('gets').innerHTML=a;
+		}
+		else if(document.getElementById(a2).checked)
+		{
+			var count=count+1;
+			var ucount=ucount-1;
+			var a ="<h4>attempted"+count+"</h4><br><h4>unattempted"+ucount+"</h4>"
+			document.getElementById('gets').innerHTML=a;
+		} 
+		else if(document.getElementById(a3).checked)
+		{
+			var count=count+1;
+			var ucount=ucount-1;	
+			var a ="<h4>attempted"+count+"</h4><br><h4>unattempted"+ucount+"</h4>"
+			document.getElementById('gets').innerHTML=a;
+		}
+		else if(document.getElementById(a4).checked)
+		{
+			var count=count+1;
+			var ucount=ucount-1;
+			var a ="<h4>attempted"+count+"</h4><br><h4>unattempted"+ucount+"</h4>"
+			document.getElementById('gets').innerHTML=a;
+		}
+		else
+		{
+			ucount=ucount+0;
+		}
+	}
+	}
+	setInterval(check, 1000);
+function sub(){
+		document.getElementById("adds").method = "post";
+		var form = document.getElementById("adds")
+		var lens = form.elements.length;
+		var mylist=[]
+		//document.getElementById('show').innerHTML=mylist;
+		
+		for(i=0;i<lens;i++)
+		{ 	field=form.elements[i]
+			if(field.type === "radio" && field.checked)
+			{
+				mylist.push(form.elements[i].value)	
+			}
+		}
+		
+		
+		document.getElementById("adds").action="{{ url_for('auth.add') }}?list=" + encodeURIComponent(mylist.join(','));	
+		form.submit();	
+		}
+		var delayTime=1
+		var hours1={{hours}}
+		var minutes1={{minutes}}
+		var seconds1={{seconds}}
+		if(hours1==0 && minutes1==0 && seconds1==0)
+		{
+			delayTime = 1000;
+			setTimeout(sub, delayTime);
+		}
+		else if(hours1==0 && minutes1==0)
+		{
+			delayTime =(seconds1*1000);
+			setTimeout(sub, delayTime);
+		}
+		else if(hours1==0 && seconds1==0)
+		{
+			delayTime=(minutes1*60*1000);
+			setTimeout(sub, delayTime);
+		}
+		else if(seconds1==0 && minutes1==0)
+		{
+			delayTime=(hours1*60*60*1000);
+			setTimeout(sub, delayTime);
+		}
+		else if(hours1==0)
+		{
+			delayTime=((minutes1*60*1000)+(seconds1*1000));
+			setTimeout(sub, delayTime);
+		}
+		else if(minutes1==0)
+		{
+			delayTime=((hours1*60*60*1000)+(seconds1*1000));
+			setTimeout(sub, delayTime);
+		}
+		else if(seconds1==0)
+		{
+			delayTime=((minutes1*60*1000)+(hours1*60*60*1000));
+			setTimeout(sub, delayTime);
+		}
+		else {
+			delayTime=((hours1*60*60*1000)+(minutes1*60*1000)+(minutes1*1000));
+			setTimeout(sub, delayTime);
+		
+		}	
+		delay=hours1*60*60+minutes1*60+seconds1;	
+		function shows(){
+			var hours2 = Math.floor(delay / 3600);
+			var minutes2 = Math.floor((delay % 3600) / 60);
+			var seconds2 = delay % 60;
+			
+			document.getElementById('show').innerHTML=hours2+":"+minutes2+":"+seconds2;
+			delay--;
+		}
+
+		setInterval(shows, 1000);
+		
+</script>
+{% endblock %}
