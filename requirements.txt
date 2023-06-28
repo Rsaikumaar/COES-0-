@@ -5,3 +5,4 @@ SQLAlchemy==2.0.2
 Werkzeug==2.2.2
 pyttsx3==2.90
 flask_sqlalchemy
+gunicorn==20.1.0
