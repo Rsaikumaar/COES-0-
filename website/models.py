@@ -4,7 +4,6 @@ from sqlalchemy import func
 import smtplib
 import random
 import speech_recognition as sr
-import pandas as pd
 import sqlite3
 
 global scc
