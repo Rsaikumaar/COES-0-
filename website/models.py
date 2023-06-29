@@ -5,6 +5,7 @@ import smtplib
 import random
 import speech_recognition as sr
 import sqlite3
+import pandas as pd
 import os
 global scc
 global v1
