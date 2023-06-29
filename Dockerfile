@@ -12,6 +12,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /COES
 # Install the application dependencies
 #port 
-EXPOSE 8880
+EXPOSE 5245
 # Define the entry point for the container
-CMD ["gunicorn", "--bind", "0.0.0.0:8880", "main:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5245", "main:app"]
