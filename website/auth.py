@@ -24,7 +24,8 @@ ac=0
 global a
 a=[]
 command ='s'
-
+current_directory = os.path.dirname(os.path.abspath(__file__))
+coes_db_path = os.path.join(current_directory, '..', 'instance', 'coes.db')
 def lo():
 	voice=Voice.query.with_entities(Voice.question)
 	return voice
@@ -277,7 +278,7 @@ def prepare():
 	types=str(request.form.get('type'))
 	lists=request.args.get('list').split(',')
 	if(types=='voice'):
-		conn = sqlite3.connect('E:/#project/instance/coes.db')
+		conn = sqlite3.connect(coes_db_path)
 		cursor = conn.cursor()
 		cursor.execute("DELETE FROM Voice")
 		for i in range(len(lists)):
@@ -286,7 +287,7 @@ def prepare():
 		conn.close()
 		messages='successfull creation.'
 	elif(types=='fill'):
-		conn = sqlite3.connect('E:/#project/instance/coes.db')
+		conn = sqlite3.connect(coes_db_path)
 		cursor = conn.cursor()
 		cursor.execute("DELETE FROM Fillin")
 		for i in range(len(lists)):
@@ -295,7 +296,7 @@ def prepare():
 		conn.close()
 		messages='successfull creation.'
 	elif(types=='mcq'):
-		conn = sqlite3.connect('E:/#project/instance/coes.db')
+		conn = sqlite3.connect(coes_db_path)
 		cursor = conn.cursor()
 		cursor.execute("DELETE FROM Nvoice")
 		for i in range(len(lists)):
@@ -355,7 +356,7 @@ def upload():
 	db.session.commit()
 	messager=Mail.uploadvoice(ac,ty,current_user)
 	df = pd.read_csv(ac)
-	conn = sqlite3.connect('E:/#project/instance/coes.db')
+	conn = sqlite3.connect(coes_db_path)
 	cursor = conn.cursor()
 	create_table_query = "CREATE TABLE IF NOT EXISTS "+name+" (id INTEGER PRIMARY KEY,subject TEXT NOT NULL,question TEXT UNIQUE)"
 	cursor.execute(create_table_query)
@@ -399,7 +400,7 @@ def upload11():
 	db.session.commit()
 	messager=Mail.uploadfill(ac,ty,current_user)
 	df = pd.read_csv(ac)
-	conn = sqlite3.connect('E:/#project/instance/coes.db')
+	conn = sqlite3.connect(coes_db_path)
 	cursor = conn.cursor()
 	create_table_query = "CREATE TABLE IF NOT EXISTS "+name+" (id INTEGER PRIMARY KEY,subject TEXT NOT NULL,question TEXT UNIQUE,ans TEXT NOT NULL)"
 	cursor.execute(create_table_query)
@@ -445,7 +446,7 @@ def upload12():
 	
 	messager=Mail.uploadmcq(ac,ty,current_user)
 	df = pd.read_csv(ac)
-	conn = sqlite3.connect('E:/#project/instance/coes.db')
+	conn = sqlite3.connect(coes_db_path)
 	cursor = conn.cursor()
 	create_table_query = "CREATE TABLE IF NOT EXISTS "+name+" (id INTEGER PRIMARY KEY,subject TEXT NOT NULL,question TEXT UNIQUE,opt1 TEXT NOT NULL,opt2 TEXT NOT NULL,opt3 TEXT NOT NULL,opt4 TEXT NOT NULL,main TEXT NOT NULL)"
 	cursor.execute(create_table_query)
@@ -616,7 +617,7 @@ def store():
 	ansd = request.form.get('ansd').split(',')
 	answers =request.form.get('answers').split(',')
 	lists =request.form.get('lists').split(',')
-	conn = sqlite3.connect('E:/#project/instance/coes.db')
+	conn = sqlite3.connect(coes_db_path)
 	cursor = conn.cursor()
 	for i in range(len(ansd)):
 		time.sleep(1)
@@ -775,7 +776,7 @@ def remove():
 	lists = request.args.get('list').split(',')
 	less=len(lists)
 	
-	conn = sqlite3.connect('E:/#project/instance/coes.db')
+	conn = sqlite3.connect(coes_db_path)
 	cursor = conn.cursor()
 	
 	for i in range(0,less):
@@ -846,7 +847,7 @@ def removel():
 	lessb=len(listb)
 	lessc=len(listc)
 	
-	conn = sqlite3.connect('E:/#project/instance/coes.db')
+	conn = sqlite3.connect(coes_db_path)
 	cursor = conn.cursor()
 	
 	for i in range(0,lessa):
