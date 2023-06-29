@@ -10,3 +10,4 @@ requests
 idna
 urllib3
 certifi
+charset-normalizer
