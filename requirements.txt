@@ -12,3 +12,4 @@ idna
 urllib3
 certifi
 charset-normalizer
+pandas
