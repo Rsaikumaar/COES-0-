@@ -1,7 +1,7 @@
 # Use the official Python image as the base image
 FROM python:3.11.1
 
-RUN pip install --no-cache-dir pip
+RUN pip install pip
 # Set the working directory in the container
 WORKDIR /COES
 
