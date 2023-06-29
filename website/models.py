@@ -5,7 +5,7 @@ import smtplib
 import random
 import speech_recognition as sr
 import sqlite3
-
+import os
 global scc
 global v1
 global v2
@@ -40,6 +40,8 @@ mark=0
 a=['0']
 keen={}
 i=0
+current_directory = os.path.dirname(os.path.abspath(__file__))
+coes_db_path = os.path.join(current_directory, '..', 'instance', 'coes.db')
 
 class logstat(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
@@ -182,7 +184,7 @@ class Mail():
 	def uploadvoice(k,t,user):
 		df = pd.read_csv(k)
 		# Connect to the database
-		conn = sqlite3.connect('E:/#project/instance/coes.db')
+		conn = sqlite3.connect(coes_db_path)
 		cursor = conn.cursor()
 		# Iterate over each row in the DataFrame
 		cursor.execute("DELETE FROM Voice")
@@ -220,7 +222,7 @@ class Mail():
 	def uploadmcq(k,t,user):
 		df = pd.read_csv(k)
 		# Connect to the database
-		conn = sqlite3.connect('E:/#project/instance/coes.db')
+		conn = sqlite3.connect(coes_db_path)
 		cursor = conn.cursor()
 		# Iterate over each row in the DataFrame
 		cursor.execute("DELETE FROM Nvoice")
@@ -263,7 +265,7 @@ class Mail():
 	def uploadfill(k,t,user):
 		df = pd.read_csv(k)
 		# Connect to the database
-		conn = sqlite3.connect('E:/#project/instance/coes.db')
+		conn = sqlite3.connect(coes_db_path)
 		cursor = conn.cursor()
 		# Iterate over each row in the DataFrame
 		cursor.execute("DELETE FROM Fillin")
