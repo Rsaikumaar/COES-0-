@@ -5,12 +5,12 @@ RUN pip install pip
 RUN pip install --upgrade pip
 # Set the working directory in the container
 WORKDIR /COES
-
+RUN apt-get update && apt-get install -y portaudio19-dev
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 # Copy the application files into the working directory
 COPY . /COES
-
 # Install the application dependencies
-RUN pip install -r requirements.txt
 #port 
 EXPOSE 8888
 # Define the entry point for the container
