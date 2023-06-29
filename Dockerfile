@@ -2,6 +2,7 @@
 FROM python:3.11.1
 
 RUN pip install --no-cache-dir pip==23.1.2
+RUN pip install --upgrade pip
 # Set the working directory in the container
 WORKDIR /COES
 
