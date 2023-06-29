@@ -737,7 +737,7 @@ def record():
 	#	return redirect(url_for('views.home'))
 	#else:
 		#print(f"Default input device index: {default_input_device_index}")
-	texts=Mail.take_word(default_input_device_index)
+	texts=Mail.take_word()
 	a.append(texts)
 	session['alist']=a
 	return render_template('qrecord.html',text=texts,i=k,user=current_user,count=count)
