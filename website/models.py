@@ -307,7 +307,7 @@ class Mail():
 			listener.stop()
 		listener = sr.Recognizer()
 		command = 'node'
-		with sr.Microphone(device_index=None) as source:
+		with sr.Microphone() as source:
 			print('Listening...')
 			voice = listener.listen(source, timeout=10, phrase_time_limit=5)    
 			try:
