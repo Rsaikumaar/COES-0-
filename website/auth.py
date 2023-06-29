@@ -18,9 +18,9 @@ import re
 import json
 import random
 import threading
-import pyaudio
-pa = pyaudio.PyAudio()
-default_input_device_index = pa.get_default_input_device_info()['index']
+#import pyaudio
+#pa = pyaudio.PyAudio()
+#default_input_device_index = pa.get_default_input_device_info()['index']
 
 
 global command
@@ -731,16 +731,16 @@ def record():
 	
 	count=Voice.query.count()
 	
-	if default_input_device_index is None:
-		print("No default input device available.")
-		flash('No Input device is present', category='error')
-		return redirect(url_for('views.home'))
-	else:
-		print(f"Default input device index: {default_input_device_index}")
-		texts=Mail.take_word(default_input_device_index)
-		a.append(texts)
-		session['alist']=a
-		return render_template('qrecord.html',text=texts,i=k,user=current_user,count=count)
+	#if default_input_device_index is None:
+	#	print("No default input device available.")
+	#	flash('No Input device is present', category='error')
+	#	return redirect(url_for('views.home'))
+	#else:
+		#print(f"Default input device index: {default_input_device_index}")
+	texts=Mail.take_word(default_input_device_index)
+	a.append(texts)
+	session['alist']=a
+	return render_template('qrecord.html',text=texts,i=k,user=current_user,count=count)
 
 @auth.route('/process', methods=['POST','GET'])
 @login_required
