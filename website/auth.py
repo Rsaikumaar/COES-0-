@@ -728,16 +728,8 @@ def buffer():
 def record():
 	global a
 	k = int(request.args.get('i'))
-	
 	count=Voice.query.count()
-	
-	#if default_input_device_index is None:
-	#	print("No default input device available.")
-	#	flash('No Input device is present', category='error')
-	#	return redirect(url_for('views.home'))
-	#else:
-		#print(f"Default input device index: {default_input_device_index}")
-	texts=Mail.take_word()
+	texts=str(request.form.get('word'))
 	a.append(texts)
 	session['alist']=a
 	return render_template('qrecord.html',text=texts,i=k,user=current_user,count=count)
