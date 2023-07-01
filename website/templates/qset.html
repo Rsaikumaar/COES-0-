@@ -1,6 +1,7 @@
 <div class="form">
-<a class="btnn" id="mylink" onclick="add()" href="{{url_for('auth.record',i=i)}}">start_to_record</a>
-
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<a class="btnn" id="mylink"  href="{{url_for('auth.record',i=i)}}">start_to_record</a>
+<input type="text"  name="word" onclick="record()" id="SpeechToText" placeholder="Speech" readonly>
 <p id=ass ></p>
   
 </div>
@@ -12,12 +13,34 @@
   add(); // Call the add() function
   setTimeout(function() {
     window.location.href = document.getElementById("mylink").href; // Navigate to the next page
-  }, 1000); // Delay for 1 second before navigating
+  }, 10000); // Delay for 1 second before navigating
 }
+  
+    function record() {
+      // Check if browser supports the Web Speech API
+      if ('webkitSpeechRecognition' in window) {
+        var recognition = new webkitSpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.continuous = true;  
+        recognition.interimResults = true; 
 
-function add() {
-  document.getElementById('ass').innerHTML = "<h1><big> start speaking </big></h1><h1><big>Speak while buffering</big></h1>";
-  document.getElementById('mylink').innerHTML = "";  
-}
+        recognition.onresult = function(event) {
+          console.log(event);
+          var transcript = event.results[0][0].transcript;
+          document.getElementById('SpeechToText').value = transcript;
+        };
+
+        recognition.start();
+
+        // Stop recognition after a specific duration (in milliseconds)
+        var recognitionDuration = 120000; // 2 minutes
+        setTimeout(function() {
+          recognition.stop();
+        }, recognitionDuration);
+      } else {
+        alert('Web Speech API is not supported in this browser.');
+      }
+    }
+  
 
 </script>
