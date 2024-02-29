@@ -8,4 +8,4 @@ app = create_app()
 
 
 if __name__=='__main__':
-	app.run(debug=True,host='192.168.5.84',port=8888)
+	app.run(debug=True)
