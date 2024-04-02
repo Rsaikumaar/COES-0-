@@ -56,7 +56,19 @@ function change1(){
 	First radio button
 */
 function change(){
-			if(document.getElementById('voice').checked)
+				if(document.getElementById('nvoice').checked)
+			{
+let text="<div >"+
+		 "<label for='cat'><b>Select catogary</b></label><br>"+
+		 "<input type='radio' name='nvexam' value='fill' onclick='change2()' id='fill' required>"+
+		 "<label for'exm'>(1)Fill In The Blanks</label><br>"+
+		 "<input type='radio'  name='nvexam' value='MCQ' onclick='change2()' id='MCQ' required>"+
+		 "<label for'exm'>(2)Multiple Choice </label><br>"+
+		 "</div>";
+		 		document.getElementById('add1').innerHTML="";
+				document.getElementById('add').innerHTML=text;
+			}
+	else if(document.getElementById('voice').checked)
 			{let text="<h1>Open the Exam of voice</h1>Formate of Excel :|subject|question";
 /*let text="<div >"+
 		 "<label for='cat'><b>Select catogary</b></label><br>"+
@@ -67,19 +79,6 @@ function change(){
 		 "<input type='radio'  name='vexam' onclick='change1()' id='v-v' required>"+
 		 "<label for'exm'>(3)Listen and Read </label><br>"+
 		 "</div>";*/
-		 		document.getElementById('add1').innerHTML="";
-				document.getElementById('add').innerHTML=text;
-			}
-			else 
-				if(document.getElementById('nvoice').checked)
-			{
-let text="<div >"+
-		 "<label for='cat'><b>Select catogary</b></label><br>"+
-		 "<input type='radio' name='nvexam' value='fill' onclick='change2()' id='fill' required>"+
-		 "<label for'exm'>(1)Fill In The Blanks</label><br>"+
-		 "<input type='radio'  name='nvexam' value='MCQ' onclick='change2()' id='MCQ' required>"+
-		 "<label for'exm'>(2)Multiple Choice </label><br>"+
-		 "</div>";
 		 		document.getElementById('add1').innerHTML="";
 				document.getElementById('add').innerHTML=text;
 			}
